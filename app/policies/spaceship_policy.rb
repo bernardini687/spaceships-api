@@ -8,4 +8,9 @@ class SpaceshipPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def update?
+    # Only the owner can update the record
+    record.user == user
+  end
 end
