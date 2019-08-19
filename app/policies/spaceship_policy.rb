@@ -3,9 +3,9 @@ class SpaceshipPolicy < ApplicationPolicy
     def resolve
       scope.all # Spaceship.all
     end
+  end
 
-    def show?
-      true
-    end
+  def show?
+    true
   end
 end

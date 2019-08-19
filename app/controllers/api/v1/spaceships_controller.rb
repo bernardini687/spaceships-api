@@ -11,6 +11,6 @@ class Api::V1::SpaceshipsController < Api::V1::BaseController
 
   def set_spaceship
     @spaceship = Spaceship.find(params[:id])
-    authorize @spacehip # pundit
+    authorize @spaceship # pundit
   end
 end
