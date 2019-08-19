@@ -2,7 +2,7 @@ class Spaceship < ApplicationRecord
   belongs_to :user
   has_many :spacemen
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :crew, numericality: {
     only_integer: true,
     greater_than: 0,
