@@ -1,5 +1,5 @@
 class Api::V1::SpaceshipsController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User, only: %i[update]
+  acts_as_token_authentication_handler_for User, only: %i[update create]
   before_action :set_spaceship, only: %i[show update]
 
   def index
@@ -12,6 +12,17 @@ class Api::V1::SpaceshipsController < Api::V1::BaseController
   def update
     if @spaceship.update(spaceship_params)
       render :show
+    else
+      render_error
+    end
+  end
+
+  def create
+    @spaceship = Spaceship.new(spaceship_params)
+    @spaceship.user = current_user
+    authorize @spaceship
+    if @spaceship.save
+      render :show, status: :created
     else
       render_error
     end

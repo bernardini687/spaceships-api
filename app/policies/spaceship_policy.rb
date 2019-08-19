@@ -13,4 +13,9 @@ class SpaceshipPolicy < ApplicationPolicy
     # Only the owner can update the record
     record.user == user
   end
+
+  def create?
+    # !user.nil?
+    user
+  end
 end
