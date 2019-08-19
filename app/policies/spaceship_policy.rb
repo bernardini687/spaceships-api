@@ -18,4 +18,8 @@ class SpaceshipPolicy < ApplicationPolicy
     # !user.nil?
     user
   end
+
+  def destroy?
+    update? # Same logic
+  end
 end
